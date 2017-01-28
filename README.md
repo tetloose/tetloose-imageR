@@ -29,7 +29,7 @@ This jQuery plugin allows you to add data attr to an image tag or element with a
 
 **Requires Advanced Custom Fields or echo the var dump of post_thumbnail and get the fields**
 
-1. Add thumbnail-sizes.php to functions.php
+1. Add wordpress/thumbnail-sizes.php to functions.php
 2. Regenerate Thumbnails
 
 ###USAGE
