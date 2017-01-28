@@ -1,3 +1,5 @@
+[![forthebadge](http://forthebadge.com/images/badges/reading-6th-grade-level.svg)](http://forthebadge.com)[![forthebadge](http://forthebadge.com/images/badges/for-sharks.svg)](http://forthebadge.com)[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://forthebadge.com)[![forthebadge](http://forthebadge.com/images/badges/compatibility-pc-load-letter.svg)](http://forthebadge.com)
+
 # imageR
 
 This jQuery plugin allows you to add data attr to an image tag or element with a background image to supply different sizes images at different brake points. To save bandwidth when viewing on a mobile but supply sharp large images to larger displays.
