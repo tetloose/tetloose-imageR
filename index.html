@@ -1,0 +1,24 @@
+
+<!doctype html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>imageR</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/reset.css">
+    </head>
+    <body>
+        <img class="js-imageR" data-small="images/image--small.jpg" data-medium="images/image--medium.jpg" data-large="images/image--large.jpg" alt="">
+        <span class="background-image js-imageR" data-small="images/image--small.jpg" data-medium="images/image--medium.jpg" data-large="images/image--large.jpg"></span>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="js/imageR.js"></script>
+        <script>
+            $(document).on('ready', function() {
+                $('.js-imageR').imageR();
+            });
+        </script>
+    </body>
+</html>
