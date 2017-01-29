@@ -11,6 +11,20 @@ This jQuery plugin allows you to add data attr to an image tag or element with a
 1. Add imageR.js to your website just before the closing </body> tag below **jQuery**
 2. Call the plugin with **$('img').imageR()**; in your js file in doc ready
 
+###Options
+
+Can take 3 options to overide default brakepoints.
+
+Default Sizes: small: **0** medium: **480** large: **1024**
+
+```
+$('.js-imageR').imageR({
+    small: '0',
+    medium: '480',
+    large: '768'
+});
+```
+
 ###USAGE
 
 **Image Tag**
@@ -27,10 +41,10 @@ This jQuery plugin allows you to add data attr to an image tag or element with a
 
 ## Wordpress
 
-**Requires Advanced Custom Fields or echo the var dump of post_thumbnail and get the fields**
+**Requires Advanced Custom Fields or echo the var dump of post_thumbnail to get sizes**
 
-1. Add wordpress/thumbnail-sizes.php to functions.php
-2. Regenerate Thumbnails
+1. Set thumbnail sizes in settings -> media
+2. Regenerate Thumbnails (use https://en-gb.wordpress.org/plugins/regenerate-thumbnails/)
 
 ###USAGE
 
@@ -39,14 +53,15 @@ This jQuery plugin allows you to add data attr to an image tag or element with a
 ```
 <?php $image = get_field('image'); ?>
 <?php if ( !empty($image) ): ?>
-    <img class="js-imageR" data-small="<?php echo $image['sizes']['imageR_small']; ?>" data-medium="<?php echo $image['sizes']['imageR_medium']; ?>" data-large="<?php echo $image['url']; ?>" alt="<?php echo $image['caption']; ?>" rel="js-showMenu">
+    <img class="js-imageR" data-small="<?php echo $image['sizes']['medium']; ?>" data-medium="<?php echo $image['sizes']['large']; ?>" data-large="<?php echo $image['url']; ?>" alt="<?php echo $image['caption']; ?>" rel="js-showMenu">
 <?php endif ?>
 ```
 
 **Background Image**
+
 ```
 <?php $image = get_field('image'); ?>
 <?php if ( !empty($image) ): ?>
-	<span class="js-imageR" data-small="<?php echo $image['sizes']['imageR_small']; ?>" data-medium="<?php echo $image['sizes']['imageR_medium']; ?>" data-large="<?php echo $image['url']; ?>"></span>
+	<span class="js-imageR" data-small="<?php echo $image['sizes']['medium']; ?>" data-medium="<?php echo $image['sizes']['large']; ?>" data-large="<?php echo $image['url']; ?>"></span>
 <?php endif ?>
 ```

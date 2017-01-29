@@ -13,31 +13,26 @@ Repo: https://github.com/tetloose/imageR
 Issues: https://github.com/tetloose/imageR/issues
 FreeToUse: Yep
 */
-
 (function( $ ) {
-
-    $.fn.imageR = function() {
-
-        var $imageR = $(this),
-            $mediaQuery = $(window).width(),
-            $mediaQuery__small = '0',
-            $mediaQuery__medium = '480',
-            $mediaQuery__large = '1024';
-
+    $.fn.imageR = function(options) {
+        var defaults = { small: '0', medium: '480', large: '1024' }
+            options = $.extend(defaults, options),
+            $imageR = jQuery(this),
+            $mediaQuery = jQuery(window).width();
         function checkSize (elm, small, medium, large, isImg) {
-            if ( $mediaQuery >= $mediaQuery__large ) {
+            if ( $mediaQuery >= options.large ) {
                 if (isImg) {
                     elm.attr('src', large );
                 } else {
                     elm.css('background-image', 'url(' + large + ')');
                 }
-            } else if ( $mediaQuery >= $mediaQuery__medium ) {
+            } else if ( $mediaQuery >= options.medium ) {
                 if (isImg) {
                     elm.attr('src', medium );
                 } else {
                     elm.css('background-image', 'url(' + medium + ')');
                 }
-            } else if ( $mediaQuery >= $mediaQuery__small ) {
+            } else if ( $mediaQuery >= options.small ) {
                 if (isImg) {
                     elm.attr('src', small );
                 } else {
@@ -45,38 +40,33 @@ FreeToUse: Yep
                 }
             }
         }
-
-        if ($imageR.length) {
+        function init( elm ) {
             $imageR.each(function() {
-                var $t = $(this),
+                var $t = jQuery(this),
                     $small = $t.data('small'),
                     $medium = $t.data('medium'),
-                    $large = $t.data('large');
+                    $large = $t.data('large'),
+                    $isImage = false;
+
+                if ($medium === undefined || $medium === null) {
+                    $medium = $large;
+                }
+
+                if ($small === undefined || $small === null) {
+                    $small = $medium;
+                }
 
                 if ( $t.is('img') ) {
-                    checkSize($t, $small, $medium, $large, true);
-                } else {
-                    checkSize($t, $small, $medium, $large, false);
+                    $isImage = true;
                 }
-            });
 
-            $(window).on('resize', function() {
-                $mediaQuery = $(window).width();
-                $imageR.each(function() {
-                    var $t = $(this),
-                        $small = $t.data('small'),
-                        $medium = $t.data('medium'),
-                        $large = $t.data('large');
-
-                    if ( $t.is('img') ) {
-                        checkSize($t, $small, $medium, $large, true);
-                    } else {
-                        checkSize($t, $small, $medium, $large, false);
-                    }
-                });
+                checkSize( $t, $small, $medium, $large, $isImage );
             });
         }
-
+        init();
+        jQuery(window).on('resize', function() {
+            $mediaQuery = jQuery(window).width();
+            init();
+        });
     };
-
 }( jQuery ));

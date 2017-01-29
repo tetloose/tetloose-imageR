@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="">
     <head>
@@ -10,14 +9,19 @@
         <link rel="stylesheet" href="css/reset.css">
     </head>
     <body>
+        <h1>Image tag</h1>
         <img class="js-imageR" data-small="images/image--small.jpg" data-medium="images/image--medium.jpg" data-large="images/image--large.jpg" alt="">
+        <h1>Background Image</h1>
         <span class="background-image js-imageR" data-small="images/image--small.jpg" data-medium="images/image--medium.jpg" data-large="images/image--large.jpg"></span>
-
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script type="text/javascript" src="js/imageR.js"></script>
+        <script type="text/javascript" src="js/imageR-min.js"></script>
         <script>
             $(document).on('ready', function() {
-                $('.js-imageR').imageR();
+                $('.js-imageR').imageR({
+                    small: '0',
+                    medium: '480',
+                    large: '768'
+                });
             });
         </script>
     </body>
